@@ -4,9 +4,6 @@ const Slash = preload("res://Slash.tscn")
 const CritSlash = preload("res://CritSlash.tscn")
 const PoisonEffect = preload("res://PoisonEffect.tscn")
 
-
-var floaty_text_scene = preload("res://FloatingText.tscn")
-
 #function thats called when the Slash Action Button is pressed
 func _on_pressed():
 	if BattleUnits.Enemy != null and BattleUnits.PlayerStats != null:
