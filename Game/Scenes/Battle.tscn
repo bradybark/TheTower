@@ -1,0 +1,373 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Images/Mobile RPG Mockup.png" type="Texture" id=1]
+[ext_resource path="res://Images/Dungeon.png" type="Texture" id=2]
+[ext_resource path="res://Slime.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Battle.gd" type="Script" id=4]
+[ext_resource path="res://PlayerStats.gd" type="Script" id=5]
+[ext_resource path="res://StatsPanel.gd" type="Script" id=6]
+[ext_resource path="res://SwordActionButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HealActionButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Rat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MagicActionButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SlimeRat.tscn" type="PackedScene" id=11]
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=12]
+[ext_resource path="res://Spider.tscn" type="PackedScene" id=13]
+[ext_resource path="res://FireballActionButton.tscn" type="PackedScene" id=14]
+[ext_resource path="res://ExecuteActionButton.tscn" type="PackedScene" id=15]
+[ext_resource path="res://FireMonster.tscn" type="PackedScene" id=16]
+[ext_resource path="res://DungeonScenes.tscn" type="PackedScene" id=17]
+[ext_resource path="res://TentacleMan.tscn" type="PackedScene" id=18]
+[ext_resource path="res://SnakeWarrior.tscn" type="PackedScene" id=19]
+[ext_resource path="res://RedDragon.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Reaper.tscn" type="PackedScene" id=21]
+[ext_resource path="res://FadePlayer.tscn" type="PackedScene" id=22]
+[ext_resource path="res://ChaosMage.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Corrupted.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Shadow.tscn" type="PackedScene" id=25]
+[ext_resource path="res://PoisonActionButton.tscn" type="PackedScene" id=26]
+[ext_resource path="res://BlockActionButton.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Textbox.tres" type="DynamicFont" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "AspectAnimation"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.0313726, 0.905882, 0.188235, 0.47451 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Battle" type="Node"]
+script = ExtResource( 4 )
+tier1_enemies = [ ExtResource( 9 ), ExtResource( 3 ), ExtResource( 13 ) ]
+bosses = [ ExtResource( 11 ), ExtResource( 20 ), ExtResource( 24 ) ]
+tier2_enemies = [ ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ) ]
+tier3_enemies = [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ) ]
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="DungeonScenes" parent="." instance=ExtResource( 17 )]
+position = Vector2( -0.0924683, -0.0288239 )
+
+[node name="Mobile RPG Mockup" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.341176 )
+position = Vector2( 90.1029, 160.136 )
+scale = Vector2( 1.99658, 1.99665 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Dungeon" type="Sprite" parent="."]
+visible = false
+position = Vector2( 45.125, 80.125 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EnemyPosition" type="Position2D" parent="."]
+position = Vector2( 46.5495, 30.5133 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Slime" parent="EnemyPosition" instance=ExtResource( 3 )]
+visible = false
+hp = 25
+damage = 4
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.187286
+margin_right = 0.187286
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+margin_right = 90.0
+margin_bottom = 52.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameButton" type="Button" parent="UI/CenterContainer"]
+visible = false
+margin_left = 13.0
+margin_top = 19.0
+margin_right = 77.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 13 )
+text = "RETURN TO MENU"
+
+[node name="NextRoomButton" type="Button" parent="UI/CenterContainer"]
+visible = false
+margin_left = 10.0
+margin_top = 19.0
+margin_right = 80.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 70, 13 )
+text = "ENTER NEXT ROOM"
+
+[node name="NextFloorButton" type="Button" parent="UI/CenterContainer"]
+visible = false
+margin_left = 10.0
+margin_top = 19.0
+margin_right = 80.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 70, 13 )
+text = "NEXT FLOOR"
+
+[node name="StatsPanel" type="Panel" parent="UI"]
+margin_left = 3.0
+margin_top = 52.0
+margin_right = 87.0
+margin_bottom = 71.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="StatsPanel" type="HBoxContainer" parent="UI/StatsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="Label" parent="UI/StatsPanel/StatsPanel"]
+margin_top = 2.0
+margin_right = 25.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "HP
+25"
+align = 1
+
+[node name="MP" type="Label" parent="UI/StatsPanel/StatsPanel"]
+margin_left = 29.0
+margin_top = 2.0
+margin_right = 54.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "MP
+0"
+align = 1
+
+[node name="AP" type="Label" parent="UI/StatsPanel/StatsPanel"]
+margin_left = 58.0
+margin_top = 2.0
+margin_right = 84.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "AP
+3"
+align = 1
+
+[node name="TextboxPanel" type="Panel" parent="UI"]
+margin_left = -2.0
+margin_top = 133.0
+margin_right = 93.0
+margin_bottom = 162.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Textbox" type="RichTextLabel" parent="UI/TextboxPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 2.0
+margin_right = -3.0
+margin_bottom = -2.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 28 )
+custom_constants/line_separation = 1
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AfterBattle" type="Panel" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -33.1575
+margin_top = -0.732391
+margin_right = 32.8425
+margin_bottom = 46.2676
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RewardsContainer" type="Control" parent="UI/AfterBattle"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 44.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/AfterBattle/RewardsContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -34.0
+margin_top = -4.15749
+margin_right = 30.0
+margin_bottom = 8.84251
+rect_min_size = Vector2( 64, 12 )
+size_flags_horizontal = 5
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0.258824, 0.258824, 0.258824, 1 )
+text = "Rewards"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D" type="Line2D" parent="UI/AfterBattle/RewardsContainer"]
+points = PoolVector2Array( 10, 7, 48, 7 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/AfterBattle/RewardsContainer"]
+margin_left = 12.0
+margin_top = 9.84251
+margin_right = 61.0
+margin_bottom = 56.8425
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XPBox" type="RichTextLabel" parent="UI/AfterBattle/RewardsContainer/VBoxContainer"]
+margin_right = 49.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 40, 13 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = ExtResource( 12 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 28 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_constants/line_separation = 2
+text = "+	5xp	"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelBox" type="RichTextLabel" parent="UI/AfterBattle/RewardsContainer/VBoxContainer"]
+margin_top = 25.0
+margin_right = 49.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 35, 13 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = ExtResource( 12 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 28 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_constants/line_separation = 2
+text = "Level: 90"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BattleActionButtons" type="GridContainer" parent="UI"]
+visible = false
+anchor_left = -0.00502811
+anchor_right = -0.00502811
+margin_left = 9.34117
+margin_top = 74.1906
+margin_right = 81.3412
+margin_bottom = 135.191
+custom_constants/vseparation = 3
+custom_constants/hseparation = 8
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwordActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 7 )]
+
+[node name="MagicActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 10 )]
+margin_left = 40.0
+margin_right = 72.0
+
+[node name="HealActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 8 )]
+visible = false
+margin_top = 16.0
+margin_bottom = 29.0
+
+[node name="ExecuteActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 15 )]
+visible = false
+margin_left = 40.0
+margin_top = 16.0
+margin_right = 73.0
+margin_bottom = 29.0
+text = "SIPHON"
+
+[node name="FireballActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 14 )]
+visible = false
+margin_top = 32.0
+margin_right = 35.0
+margin_bottom = 45.0
+text = "FLAMES"
+
+[node name="PoisonActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 26 )]
+visible = false
+margin_left = 43.0
+margin_top = 32.0
+margin_right = 76.0
+margin_bottom = 45.0
+
+[node name="BlockActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 27 )]
+visible = false
+margin_top = 48.0
+margin_bottom = 61.0
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 22 )]
+anims/AspectAnimation = SubResource( 2 )
+
+[node name="Fade" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="ap_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_PlayerStats_ap_changed"]
+[connection signal="hp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_PlayerStats_hp_changed"]
+[connection signal="mp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_PlayerStats_mp_changed"]
+[connection signal="pressed" from="UI/CenterContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/NextRoomButton" to="." method="_on_NextRoomButton_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/NextFloorButton" to="." method="_on_NextFloorButton_pressed"]

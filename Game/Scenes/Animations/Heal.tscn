@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/heal.png" type="Texture" id=1]
+[ext_resource path="res://Heal.tres" type="Animation" id=2]
+[ext_resource path="res://Heal.gd" type="Script" id=3]
+
+[node name="Heal" type="Node2D"]
+position = Vector2( 16.5, 60 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Heal"
+playback_speed = 1.5
+anims/Heal = ExtResource( 2 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

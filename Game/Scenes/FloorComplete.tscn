@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Images/StartMenuWP.png" type="Texture" id=2]
+[ext_resource path="res://FloorComplete.gd" type="Script" id=3]
+[ext_resource path="res://FadePlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Textbox.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="FloorComplete" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="StartMenuWP" type="Sprite" parent="."]
+position = Vector2( 45.3189, 79.6912 )
+texture = ExtResource( 2 )
+
+[node name="TopPanel" type="Panel" parent="."]
+margin_right = 90.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 90, 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopText" type="RichTextLabel" parent="TopPanel"]
+anchor_left = 0.495591
+anchor_top = 0.5
+anchor_right = 0.495591
+anchor_bottom = 0.5
+margin_left = -32.3892
+margin_top = -3.5
+margin_right = 93.6108
+margin_bottom = 6.5
+rect_min_size = Vector2( 50, 10 )
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "Choose a reward:"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionAVBox" type="VBoxContainer" parent="."]
+margin_top = 21.0
+margin_right = 90.0
+margin_bottom = 79.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionAButton" type="Button" parent="OptionAVBox"]
+margin_right = 90.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 90, 15 )
+
+[node name="OptionAPanel" type="Panel" parent="OptionAVBox"]
+margin_top = 17.0
+margin_right = 90.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 90, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionAText" type="RichTextLabel" parent="OptionAVBox/OptionAPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.00001
+margin_bottom = -2.0
+rect_min_size = Vector2( 50, 10 )
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 5 )
+custom_constants/shadow_offset_y = 1
+custom_constants/line_separation = 2
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="OptionBVBox" type="VBoxContainer" parent="."]
+margin_top = 90.0
+margin_right = 90.0
+margin_bottom = 176.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionBButton" type="Button" parent="OptionBVBox"]
+margin_right = 90.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 90, 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionBPanel" type="Panel" parent="OptionBVBox"]
+margin_top = 17.0
+margin_right = 90.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 90, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionBText" type="RichTextLabel" parent="OptionBVBox/OptionBPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.00001
+margin_bottom = -2.0
+rect_min_size = Vector2( 50, 10 )
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 5 )
+custom_constants/line_separation = 2
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="OptionAVBox/OptionAButton" to="." method="_on_OptionAButton_pressed"]
+[connection signal="pressed" from="OptionBVBox/OptionBButton" to="." method="_on_OptionBButton_pressed"]

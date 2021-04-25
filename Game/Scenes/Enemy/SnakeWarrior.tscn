@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://TentacleMan.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/mam1-1.png" type="Texture" id=2]
+
+[node name="SnakeWarrior" instance=ExtResource( 1 )]
+hp = 100
+damage = 10
+crit_chance = 15
+enemyName = "Sssnake Warrior"
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -1.001 )
+scale = Vector2( 0.22, 0.22 )
+texture = ExtResource( 2 )
+
+[node name="HPLabel" parent="." index="1"]
+margin_left = -19.7528
+margin_top = -26.8701
+margin_right = 20.2472
+margin_bottom = -12.8701
+custom_colors/font_color = Color( 0.956863, 0.905882, 0.152941, 1 )
+text = "100hp"
+align = 1
+
+[node name="HoverInfo" parent="." index="3"]
+margin_left = -24.1867
+margin_top = -15.102
+margin_right = 24.8133
+margin_bottom = 14.898
+rect_min_size = Vector2( 49, 30 )
+description = "ssssuper sssstrong"

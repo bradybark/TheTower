@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Images/Rat.png" type="Texture" id=2]
+[ext_resource path="res://HoverInfo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/executableicon.png" type="Texture" id=4]
+[ext_resource path="res://Executable.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.40175, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.117989, -4.01147 ), Vector2( 2.12372, 4.48341 ), Vector2( -0.236327, 6.7336 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "deal_damage"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Death"
+length = 0.2
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -3 ), Vector2( 0, 6 ), Vector2( 0, -6 ), Vector2( 0, 3 ), Vector2( 0, 0 ), Vector2( 0.943874, -0.471939 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2.02721, -3.68974 ), Vector2( -2.027, 3.69 ), Vector2( -2.027, -3.69 ), Vector2( 0, 0 ), Vector2( 0.628544, 2.94748 ) ]
+}
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -3 )
+texture = ExtResource( 2 )
+
+[node name="HPLabel" type="Label" parent="."]
+margin_left = -19.5898
+margin_top = -26.8196
+margin_right = 20.4102
+margin_bottom = -12.8196
+text = "25hp"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 1 )
+anims/Death = SubResource( 2 )
+anims/Shake = SubResource( 3 )
+
+[node name="HoverInfo" parent="." instance=ExtResource( 3 )]
+margin_left = -24.1867
+margin_top = -15.102
+margin_right = 24.8133
+margin_bottom = 14.898
+rect_min_size = Vector2( 49, 30 )
+
+[node name="Executable" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20.5293, -17.5797 )
+scale = Vector2( 0.666, 0.666 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/DungeonSpider.png" type="Texture" id=2]
+
+[node name="Enemy" instance=ExtResource( 1 )]
+hp = 20
+damage = 6
+crit_chance = 7
+kill_xp = 10
+enemyName = "Spider"
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( -0.75, 0 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="HPLabel" parent="." index="1"]
+margin_left = -19.5273
+margin_top = -26.8821
+margin_right = 20.4727
+margin_bottom = -12.8821
+text = "20hp"
+
+[node name="HoverInfo" parent="." index="3"]
+margin_left = -24.2335
+margin_top = -15.1645
+margin_right = 24.7665
+margin_bottom = 14.8355
+description = "think it'll give me powers?"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/FireMonster.png" type="Texture" id=2]
+
+[node name="FireMonster" instance=ExtResource( 1 )]
+hp = 80
+damage = 12
+crit_chance = 10
+kill_xp = 25
+enemyName = "Laveel"
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 2 )
+
+[node name="HPLabel" parent="." index="1"]
+margin_left = -19.9648
+margin_top = -27.6946
+margin_right = 20.0352
+margin_bottom = -13.6946
+custom_colors/font_color = Color( 0.956863, 0.905882, 0.152941, 1 )
+text = "80hp"
+
+[node name="HoverInfo" parent="." index="3"]
+description = "Sheeesh he's hot"
