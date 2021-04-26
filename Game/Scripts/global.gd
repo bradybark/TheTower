@@ -19,6 +19,8 @@ func set_aspect_rogue(value):
 func set_aspect_sentinel(value):
 	aspect_of_sentinel = value
 
+#sets the textbox after the player advances floors
+#sets unique text based on the player aspect choices
 func set_textbox_floor_complete():
 	var main = get_tree().current_scene
 	var textbox = main.find_node("Textbox")
