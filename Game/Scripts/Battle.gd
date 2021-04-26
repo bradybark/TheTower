@@ -234,8 +234,3 @@ func _on_NextFloorButton_pressed():
 		var change = get_tree().change_scene("res://PlayerWon.tscn")
 		if change != 0:
 			print("Error Code: ", change)
-
-#sets the textbox after the player advances floors
-#sets unique text based on the player aspect choices
-
-	
