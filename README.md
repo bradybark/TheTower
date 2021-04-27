@@ -4,6 +4,11 @@
     Link to Play:
 https://bradybark.itch.io/the-tower
 
+        Story Basics:
+The player character is an aspect of a powerful mage’s soul. The mage attempted to smash through the veil separating the world from the realm of the gods. In their attempt, their soul was smashed to pieces and spread out amongst the land. The PC has no memory of this event or of their true self. The PC “wakes up” in a mysterious tower with no way of going but up. 
+
+If the Player defeats the final boss they are rewarded with some cryptic text about their future. It is revealed that the Player is drawn to the Tower and is unable to leave. They will become Corrupted by its influence, and become the final boss at the top of the Tower.
+
 
         Breakdown of Gameplay:
 The Player is shown 3 different values on their Stats Panel: HP, MP, and AP
@@ -52,8 +57,3 @@ Each tier of enemies is stored in an array and is shuffled each time the game wa
 
         Reasoning Behind Engine Choice:
 This was my first time using GoDot and GDScript, the majority of my programming experience has been in C++. I chose to use GoDot for this Project because of the nature and scope of the Game (GoDot is great for 2D projects) . Since this was a solo endeavor I had to be aware of scope creep and be reasonable in my design and aspirations. 
-
-        Story Basics:
-The player character is an aspect of a powerful mage’s soul. The mage attempted to smash through the veil separating the world from the realm of the gods. In their attempt, their soul was smashed to pieces and spread out amongst the land. The PC has no memory of this event or of their true self. The PC “wakes up” in a mysterious tower with no way of going but up. 
-
-If the Player defeats the final boss they are rewarded with some cryptic text about their future. It is revealed that the Player is drawn to the Tower and is unable to leave. They will become Corrupted by its influence, and become the final boss at the top of the Tower.
